@@ -6,7 +6,8 @@
   },
   "mongoService": {
     "type": "mongodb",
-    "database": "test"
+    "database": "test",
+    "useNewUrlParser": true
   },
   "loggerService": {
     "filename": "./log/winston.log"

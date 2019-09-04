@@ -1,6 +1,6 @@
 import fp from 'lodash/fp'
 import colors from 'colors/safe'
-import { GlobalStore } from './global.d'
+import { GlobalStore } from './global'
 
 export const globalStore: GlobalStore = {} as any
 

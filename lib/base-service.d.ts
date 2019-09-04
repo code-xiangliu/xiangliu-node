@@ -1,4 +1,4 @@
-import { GlobalStore } from './global.d';
+import { GlobalStore } from './global';
 export declare const globalStore: GlobalStore;
 interface RegisterInfo {
     key: string;
