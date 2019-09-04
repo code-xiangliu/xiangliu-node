@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/mail-service/index.ts"],"names":[],"mappings":";;;;;AACA,kDAAuD;AACvD,wDAAqC;AACrC,sDAA6B;AAE7B,MAAM,UAAU,GAAG,GAAG,EAAE;IACtB,uBAAQ,CAAC,EAAE,GAAG,EAAE,aAAa,EAAE,YAAY,EAAE,eAAe,EAAE,CAAC,CAAA;IAE/D,0BAAW,CAAC,UAAU,GAAG,EAAE,aAAa,EAAb,iBAAa,EAAE,MAAM,EAAN,gBAAM,EAAE,CAAA;AACpD,CAAC,CAAA;AAED,kBAAe,UAAU,CAAA"}

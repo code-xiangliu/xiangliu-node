@@ -1,0 +1,14 @@
+{
+  "redisService": {
+    "port": 6379,
+    "host": "localhost",
+    "options": {}
+  },
+  "mongoService": {
+    "type": "mongodb",
+    "database": "test"
+  },
+  "loggerService": {
+    "filename": "./log/winston.log"
+  }
+}
