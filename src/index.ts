@@ -6,8 +6,10 @@ import useRedisService from './redis-service'
 import useCacheService from './cache-service'
 import useServerService from './server-service'
 import useMailService from './mail-service'
+import utils from './utils'
 
 export default {
+  utils,
   globalStore,
   useBaseService,
   useConfigService,
