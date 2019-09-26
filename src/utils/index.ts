@@ -8,7 +8,7 @@ const sendJSON = (res: Response, camelObj: any) => {
   if (useCamel === 'true') {
     res.json(camelObj)
   } else {
-    const snakeObj = changeCaseObj.snakeCase(camelObj)
+    const snakeObj = changeCaseObj.snakeCase(camelObj, { ignoreArray: true })
     res.json(snakeObj)
   }
 }
