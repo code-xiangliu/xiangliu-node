@@ -5,6 +5,7 @@ export interface ConfigService {
         loggerService: {
             filename: string;
         };
+        kueService: any;
     };
 }
 export interface RedisService {
@@ -20,14 +21,13 @@ export interface CacheService {
     delCache(cacheKey: string): Promise<any>;
 }
 export interface MongoService {
-    getManager(): Promise<any>;
+    getConnection(): Promise<any>;
 }
 export interface ServerService {
     run: (app: import('express').Express, port: number) => void;
 }
-export interface MailService {
-    MailgunClient: typeof import('./mail-service/mailgun').default;
-    Server: typeof import('./mail-service/server').default;
+export interface KueService {
+    queue: any;
 }
 export interface GlobalStore {
     serviceRegister: any;
@@ -37,7 +37,7 @@ export interface GlobalStore {
     mongoService: MongoService;
     loggerService: import('winston').Logger;
     serverService: ServerService;
-    mailServer: MailService;
+    kueService: KueService;
     __exit_hooked__: boolean;
     calc: (obj: any) => {};
     p: (...args: any[]) => void;

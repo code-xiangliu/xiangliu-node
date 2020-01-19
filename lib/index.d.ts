@@ -1,7 +1,7 @@
 /// <reference types="express" />
 declare const _default: {
     utils: {
-        sendJSON: (res: import("express").Response, camelObj: any) => void;
+        sendJSON: (res: import("express").Response<any>, camelObj: any) => void;
         pwdHash: {
             generate: (password: string, options: {
                 algorithm: string;
@@ -19,7 +19,8 @@ declare const _default: {
     useLoggerService: () => void;
     useRedisService: (options?: import("./redis-service").RedisOptions) => void;
     useCacheService: () => void;
+    useMongoService: () => void;
     useServerService: () => void;
-    useMailService: () => void;
+    useKueService: () => void;
 };
 export default _default;

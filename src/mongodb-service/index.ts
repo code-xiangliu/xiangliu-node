@@ -1,27 +1,37 @@
-import { createConnection, Connection } from 'typeorm'
+import mongoose from 'mongoose'
 
 import { register, globalStore } from '../base-service'
 
+const defaultHost = 'localhost'
+const defaultPort = 27017
+
 class MongoService {
   static options: any = null
-  static connection: Connection = null
+  static connection: mongoose.Collection = null
 
   static async connect (options: any) {
     if (MongoService.connection) return
     try {
       MongoService.options = options
-      MongoService.connection = await createConnection(options)
+      const { host, port, username, password, database, ...opts } = options
+      if (!database) {
+        throw new Error('mongodb database could not be empty')
+      }
+      const uri = `mongodb://${
+        username && password ? `${username}:${password}@` : ''
+      }${host || defaultHost}:${port || defaultPort}/${database}`
+      MongoService.connection = await (mongoose.createConnection(uri, opts) as any)
       globalStore.loggerService.info('connected successfully')
     } catch (err) {
       globalStore.loggerService.info(`connected failed: ${err.message}`)
     }
   }
 
-  static async getManager () {
+  static async getConnection () {
     if (!MongoService.connection) {
       await MongoService.connect(MongoService.options)
     }
-    return MongoService.connection.manager
+    return MongoService.connection
   }
 }
 
@@ -35,7 +45,7 @@ const useService = () => {
   MongoService.connect(configService.config.mongoService).catch()
 
   globalStore.mongoService = {
-    getManager: MongoService.getManager
+    getConnection: MongoService.getConnection
   }
 }
 
