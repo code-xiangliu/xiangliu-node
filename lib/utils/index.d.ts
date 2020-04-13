@@ -1,6 +1,6 @@
 import { Response } from 'express';
 declare const _default: {
-    sendJSON: (res: Response, camelObj: any) => void;
+    sendJSON: (res: Response<any>, camelObj: any) => void;
     pwdHash: {
         generate: (password: string, options: {
             algorithm: string;
