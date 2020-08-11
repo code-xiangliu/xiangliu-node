@@ -13,11 +13,13 @@ class MongoService {
     if (MongoService.connection) return
     try {
       MongoService.options = options
-      const { host, port, database, ...opts } = options
+      const { host, port, username, password, database, ...opts } = options
       if (!database) {
         throw new Error('mongodb database could not be empty')
       }
-      const uri = `mongodb://${host || defaultHost}:${port || defaultPort}/${database}`
+      const uri = `mongodb://${
+        username && password ? `${username}:${password}@` : ''
+      }${host || defaultHost}:${port || defaultPort}/${database}`
       MongoService.connection = await (mongoose.createConnection(uri, opts) as any)
       globalStore.loggerService.info('connected successfully')
     } catch (err) {
