@@ -1,2 +1,2 @@
-declare const useService: (configPath?: string) => void;
+declare const useService: (configPath?: string | null) => void;
 export default useService;
