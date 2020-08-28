@@ -17,8 +17,9 @@ class MongoService {
       if (!database) {
         throw new Error('mongodb database could not be empty')
       }
-      const uri = `mongodb://${
-        username && password ? `${username}:${password}@` : ''
+      const uri = `mongodb://${username && password
+        ? `${encodeURIComponent(username)}:${encodeURIComponent(password)}@`
+        : ''
       }${host || defaultHost}:${port || defaultPort}/${database}`
       MongoService.connection = await (mongoose.createConnection(uri, opts) as any)
       globalStore.loggerService.info('connected successfully')
